@@ -2,6 +2,8 @@
 
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
+use App\Http\Controllers\ImportController;
+use App\Http\Controllers\ReporteController;
 
 // Página de bienvenida redirige al dashboard
 Route::get('/', function () {
@@ -36,6 +38,11 @@ Auth::routes();
     //Ruta para cargar Excel
     Route::get('/import', [ImportController::class, 'showForm'])->name('import.form');
     Route::post('/import', [ImportController::class, 'import'])->name('import');
+
+    //RUta Reporte
+    Route::get('/reportes', [ReporteController::class, 'showForm'])->name('report.form');
+    Route::post('/reportes/generar', [ReporteController::class, 'generateReport'])->name('report.generate');
+    Route::post('/reportes/exportar', [ReporteController::class, 'exportExcel'])->name('report.export');
 
 //});
 
