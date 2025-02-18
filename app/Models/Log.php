@@ -1,22 +1,14 @@
 <?php
 
-namespace App\Exports;
+namespace App\Models;
 
-use App\Models\Log;
-use Maatwebsite\Excel\Concerns\FromCollection;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Model;
 
-class LogsExport implements FromCollection
+class Log extends Model
 {
-    protected $fecha_inicio, $fecha_fin;
-    
-    public function __construct($fecha_inicio, $fecha_fin)
-    {
-        $this->fecha_inicio = $fecha_inicio;
-        $this->fecha_fin = $fecha_fin;
-    }
+    use HasFactory;
 
-    public function collection()
-    {
-        return Log::whereBetween('created_at', [$this->fecha_inicio, $this->fecha_fin])->get();
-    }
+    protected $table = 'logs'; // Asegurar que coincide con la base de datos
+    protected $fillable = ['usuario_id', 'actividad', 'detalles', 'created_at', 'updated_at'];
 }
