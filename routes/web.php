@@ -32,6 +32,11 @@ Auth::routes();
     // Ruta para la edición de perfil
     Route::get('/profile/edit', [App\Http\Controllers\ProfileController::class, 'edit'])->name('profile.edit');
     Route::put('/profile', [App\Http\Controllers\ProfileController::class, 'update'])->name('profile.update');
+
+    //Ruta para cargar Excel
+    Route::get('/import', [ImportController::class, 'showForm'])->name('import.form');
+    Route::post('/import', [ImportController::class, 'import'])->name('import');
+
 //});
 
 // Ruta alternativa para el home

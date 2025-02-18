@@ -19,7 +19,8 @@ return new class extends Migration
                 $table->text('detalles')->nullable();
                 $table->timestamps();
             });
-    }
+        }
+    }    
 
     /**
      * Reverse the migrations.
